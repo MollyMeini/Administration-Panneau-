@@ -1,3 +1,7 @@
+package models;
+
+import javax.persistence.*;
+import java.sql.Date;
 @Entity
 @Table(name="CODEREVIEW")
 public class CodeReview {
@@ -8,29 +12,31 @@ public class CodeReview {
     private int id;
     private String name;
     private String description;
-    private Date datetime;
-    private Class classmember;
+    private String datetime;
+    @ManyToOne
+    @JoinColumn(name="classid", nullable=false)
+    private Class classe;
 
     //Constructors
     public CodeReview() {
     }
-    public CodeReview(String name, String description, Date datetime, Class classmember) {
+    public CodeReview(String name, String description, String datetime, Class classe) {
         this.name = name;
         this.description = description;
         this.datetime = datetime;
-        this.classmember = classmember;
+        this.classe = classe;
     }
 
     //Getters
     public int getId() { return id; }
     public String getName() { return name; }
     public String getDescription() { return description; }
-    public Date getDatetime() { return datetime; }
-    public Class getClassmember() { return classmember; }
+    public String getDatetime() { return datetime; }
+    public Class getClasse() { return classe; }
 
     //Setters
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }
-    public void setDatetime(Date datetime) { this.datetime = datetime; }
-    public void setClassmember(Class classmember) { this.classmember = classmember; }
+    public void setDatetime(String datetime) { this.datetime = datetime; }
+    public void setClasse(Class classe) { this.classe = classe; }
 }

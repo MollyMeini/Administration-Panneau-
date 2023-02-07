@@ -1,3 +1,8 @@
+package models;
+
+import javax.persistence.*;
+import java.util.Set;
+
 @Entity
 @Table(name="CLASS")
 public class Class {

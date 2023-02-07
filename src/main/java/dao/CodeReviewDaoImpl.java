@@ -1,38 +1,45 @@
+package dao;
+
+import dao.CodeReviewDao;
+import models.Class;
+import models.CodeReview;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDaoImpl implements StudentDao {
+public class CodeReviewDaoImpl implements CodeReviewDao {
 
     //list is working as a database
-    List<Student> students;
+    List<CodeReview> codeReviews;
 
-    public StudentDaoImpl(){
-        students = new ArrayList<Student>();
-        Student student1 = new Student("Robert",0);
-        Student student2 = new Student("John",1);
-        students.add(student1);
-        students.add(student2);
-    }
-    @Override
-    public void deleteStudent(Student student) {
-        students.remove(student.getRollNo());
-        System.out.println("Student: Roll No " + student.getRollNo() + ", deleted from database");
-    }
-
-    //retrive list of students from the database
-    @Override
-    public List<Student> getAllStudents() {
-        return students;
+    public CodeReviewDaoImpl(){
+        codeReviews = new ArrayList<CodeReview>();
+        Class teste = new Class("aaa");
+        CodeReview codeReview1 = new CodeReview("Robert","test","05/02/1997",teste);
+        CodeReview codeReview2 = new CodeReview("John","test2","15/02/1988",teste);
+        codeReviews.add(codeReview1);
+        codeReviews.add(codeReview2);
     }
 
     @Override
-    public Student getStudent(int rollNo) {
-        return students.get(rollNo);
+    public List<CodeReview> getAllCodeReview() {
+        return codeReviews;
     }
 
     @Override
-    public void updateStudent(Student student) {
-        students.get(student.getRollNo()).setName(student.getName());
-        System.out.println("Student: Roll No " + student.getRollNo() + ", updated in the database");
+    public CodeReview getCodeReview(int id) {
+        return codeReviews.get(id);
+    }
+
+    @Override
+    public void updateCodeReview(CodeReview codeReview) {
+        codeReviews.get(codeReview.getId()).setName(codeReview.getName());
+        System.out.println("Code Review: Id " + codeReview.getId() + ", updated in the database");
+    }
+
+    @Override
+    public void deleteStudent(CodeReview codeReview) {
+        codeReviews.remove(codeReview.getId());
+        System.out.println("Code Review: Id " + codeReview.getId() + ", deleted from database");
     }
 }

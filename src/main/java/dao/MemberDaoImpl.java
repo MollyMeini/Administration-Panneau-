@@ -1,3 +1,8 @@
+package dao;
+
+import models.Class;
+import models.Member;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,31 +13,32 @@ public class MemberDaoImpl implements MemberDao {
 
     public MemberDaoImpl(){
         members = new ArrayList<Member>();
-        Member member1 = new Member("Robert","test","12/05/2015",);
-        Member member2 = new Member("John","test2","12/05/2015",);
-        students.add(student1);
-        students.add(student2);
+        Class teste = new Class("aaa");
+        Member member1 = new Member("Robert","test","12/05/2015",teste);
+        Member member2 = new Member("John","test2","12/05/2015",teste);
+        members.add(member1);
+        members.add(member2);
     }
     @Override
-    public void deleteStudent(Student student) {
-        students.remove(student.getRollNo());
-        System.out.println("Student: Roll No " + student.getRollNo() + ", deleted from database");
+    public void deleteMember(Member member) {
+        members.remove(member.getId());
+        System.out.println("Member: Id " + member.getId() + ", deleted from database");
     }
 
     //retrive list of students from the database
     @Override
-    public List<Student> getAllStudents() {
-        return students;
+    public List<Member> getAllMembers() {
+        return members;
     }
 
     @Override
-    public Student getStudent(int rollNo) {
-        return students.get(rollNo);
+    public Member getMember(int id) {
+        return members.get(id);
     }
 
     @Override
-    public void updateStudent(Student student) {
-        students.get(student.getRollNo()).setName(student.getName());
-        System.out.println("Student: Roll No " + student.getRollNo() + ", updated in the database");
+    public void updateMember(Member member) {
+        members.get(member.getId()).setName(member.getName());
+        System.out.println("Member: Id " + member.getId() + ", updated in the database");
     }
 }
