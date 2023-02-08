@@ -1,14 +1,20 @@
 package services;
 
+import dao.ClassDao;
+import dao.ClassDaoImpl;
 import dao.MemberDao;
+import dao.MemberDaoImpl;
+import models.Class;
+import models.Member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.Date;
 
 public class MemberService {
 
-    private MemberDao memberDao = new MemberDAO();
-    private ClassDAO classDAO = new ClassDAO();
+    private MemberDao memberDao = new MemberDaoImpl();
+    private ClassDao classDAO = new ClassDaoImpl();
     public void addMember(HttpServletRequest req) {
 
         Member member = this.getFromReq(req);
@@ -22,7 +28,7 @@ public class MemberService {
         String birthdate = req.getParameter("birthdate");
         String className = req.getParameter("class");
 
-        Class classe = classDAO.getByName(className);
+        Class classe = classDAO.getClass(className);
 
         Member member = new Member(name, email, birthdate, classe);
 

@@ -1,14 +1,18 @@
 package services;
 
+import dao.ClassDao;
+import dao.ClassDaoImpl;
 import dao.MemberDao;
 import dao.MemberDaoImpl;
+import models.Class;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class ClassService {
 
     private MemberDao memberDao = new MemberDaoImpl();
-    private ClassDAO classDAO = new ClassDAO();
+    private ClassDao classDAO = new ClassDaoImpl();
+
     public void addClass(HttpServletRequest req) {
 
         Class classe = this.getFromReq(req);

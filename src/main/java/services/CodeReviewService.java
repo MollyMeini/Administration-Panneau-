@@ -1,15 +1,18 @@
 package services;
 
-import dao.MemberDao;
+import dao.*;
+import models.Class;
+import models.CodeReview;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class CodeReviewService {
 
-    private MemberDao memberDao = new MemberDao();
-    private ClassDAO classDAO = new ClassDAO();
+    private MemberDao memberDao = new MemberDaoImpl();
+    private ClassDao classDAO = new ClassDaoImpl();
 
-    private CodeReviewDAO codeReviewDAO = new CodeReviewDAO();
+    private CodeReviewDao codeReviewDAO = new CodeReviewDaoImpl();
+
     public void addCodeReview(HttpServletRequest req) {
 
         CodeReview cr = this.getFromReq(req);
@@ -17,11 +20,14 @@ public class CodeReviewService {
 
     }
 
-    public void deleteCodeReview(){} //TODO juste id ?
+    public void deleteCodeReview(HttpServletRequest req){
+        CodeReview cr = this.getFromReq(req);
+        codeReviewDAO.deleteCodeReview(cr);
+    }
 
     public void updateCodeReview(HttpServletRequest req){
         CodeReview cr = this.getFromReq(req);
-        codeReviewDAO.updateCodeReview(cr);
+        codeReviewDAO.updateCodeReview(cr, cr.getName(), cr.getDescription(), cr.getDatetime(), cr.getClasse());
     }
 
     private CodeReview getFromReq(HttpServletRequest req){
@@ -30,7 +36,7 @@ public class CodeReviewService {
         String date = req.getParameter("date");
         String className = req.getParameter("class");
 
-        Class classe = classDAO.getByName(className);
+        Class classe = classDAO.getClass(className);
 
         CodeReview cr = new CodeReview(name, desc, date, classe);
 
