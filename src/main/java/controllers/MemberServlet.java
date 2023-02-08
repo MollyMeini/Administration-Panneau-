@@ -1,8 +1,6 @@
-package servlets;
+package controllers;
 
 import Services.MemberService;
-import io.takima.master3.HelloService;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
