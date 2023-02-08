@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * The servlet is registered and mapped to /HelloServlet using the {@linkplain WebServlet
@@ -34,7 +35,9 @@ import java.io.IOException;
 @WebServlet("/AddMember")
 public class AddMemberJspController extends HttpServlet {
 
-    HelloService helloService = new HelloService();
+    static String PAGE_HEADER = "<html><head><title>helloworld</title></head><body>";
+
+    static String PAGE_FOOTER = "</body></html>";
 
     @Override
     public void init() {
@@ -42,9 +45,34 @@ public class AddMemberJspController extends HttpServlet {
     }
 
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //this.doGet(req, resp);
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String birthDate = req.getParameter("birthdate");
+        String classeName = req.getParameter("classname");
+
+        resp.setContentType("text/html");
+        PrintWriter writer = resp.getWriter();
+        writer.println(PAGE_HEADER);
+        writer.println("<h1>" + name + "</h1>");
+        writer.println("<h1>" + email + "</h1>");
+        writer.println("<h1>" + birthDate + "</h1>");
+        writer.println("<h1>" + classeName + "</h1>");
+
+        writer.println(PAGE_FOOTER);
+        writer.close();
+        //if classname exist in the database we report repeat error, otherwise we add into the DB
+        if(classeName != null){
+            System.out.println(" receive data");
+        }else{
+
+        }
+    }
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            req.setAttribute("helloService", helloService);
+
             RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
             dispatcher.forward(req, resp);
     }

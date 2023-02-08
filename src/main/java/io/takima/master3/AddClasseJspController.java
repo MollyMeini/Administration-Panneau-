@@ -65,8 +65,8 @@ public class AddClasseJspController extends HttpServlet {
         }else{
 
         }
-
-    }    @Override
+    }
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             //Search all the info of the class through
             //put the get info into the Request
