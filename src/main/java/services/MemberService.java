@@ -1,4 +1,6 @@
-package Services;
+package services;
+
+import dao.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;

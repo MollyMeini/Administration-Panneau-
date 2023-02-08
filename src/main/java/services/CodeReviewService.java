@@ -1,10 +1,12 @@
-package Services;
+package services;
+
+import dao.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class CodeReviewService {
 
-    private MemberDao memberDao = new MemberDAO();
+    private MemberDao memberDao = new MemberDao();
     private ClassDAO classDAO = new ClassDAO();
 
     private CodeReviewDAO codeReviewDAO = new CodeReviewDAO();
