@@ -39,7 +39,7 @@ import java.io.PrintWriter;
 @SuppressWarnings("serial")
 @WebServlet("/AddClasse")
 public class AddClasseJspController extends HttpServlet {
-    static String PAGE_HEADER = "<html><head><title>helloworld</title></head><body>";
+    static String PAGE_HEADER = "<html><head><title>add-classe</title></head><body>";
 
     static String PAGE_FOOTER = "</body></html>";
 
@@ -55,10 +55,11 @@ public class AddClasseJspController extends HttpServlet {
         resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
         writer.println(PAGE_HEADER);
-        writer.println("<h1>" + classeName + "</h1>");
-        writer.println("<h1>" + member + "</h1>");
+        writer.println("<h1> classeName" + classeName + "</h1>");
+        writer.println("<h1> Member" + member + "</h1>");
         writer.println(PAGE_FOOTER);
         writer.close();
+
         //if classname exist in the database we report repeat error, otherwise we add into the DB
         if(classeName == null){
 
