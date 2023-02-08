@@ -14,11 +14,11 @@ public class MemberDaoImpl implements MemberDao {
 
     public MemberDaoImpl(){
         members = new ArrayList<Member>();
-        Class teste = new Class("aaa");
-        Member member1 = new Member("Robert","test","12/05/2015",teste);
-        Member member2 = new Member("John","test2","12/05/2015",teste);
-        members.add(member1);
-        members.add(member2);
+//        Class teste = new Class("aaa");
+//        Member member1 = new Member("Robert","test","12/05/2015",teste);
+//        Member member2 = new Member("John","test2","12/05/2015",teste);
+//        members.add(member1);
+//        members.add(member2);
     }
 
     @Override

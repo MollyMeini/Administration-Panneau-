@@ -13,10 +13,10 @@ public class ClassDaoImpl implements ClassDao {
 
     public ClassDaoImpl(){
         classes = new ArrayList<Class>();
-        Class class1 = new Class("Robert");
-        Class class2 = new Class("John");
-        classes.add(class1);
-        classes.add(class2);
+//        Class class1 = new Class("Robert");
+//        Class class2 = new Class("John");
+//        classes.add(class1);
+//        classes.add(class2);
     }
 
     public void deleteCodeReview(Class classe) {
@@ -55,11 +55,12 @@ public class ClassDaoImpl implements ClassDao {
         }
         if (!flag){
             classes.add(classe);
+            System.out.println("Class: " + classe.getName() + ", add in the database");
         }
     }
 
     @Override
-    public void updateClass(Class classe, String className) {
+    public void updateClass(Class classe, String className, int nMembers) {
         boolean flag = false;
         for(Class aClass : classes) {
             if (aClass.getName().equals(className)) {
@@ -74,7 +75,7 @@ public class ClassDaoImpl implements ClassDao {
     }
 
     @Override
-    public void deleteMember(Class classe) {
+    public void deleteClass(Class classe) {
         boolean flag = false;
         for(Class aClass : classes) {
             if (aClass.getName().equals(classe.getName())) {

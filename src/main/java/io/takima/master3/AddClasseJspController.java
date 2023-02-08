@@ -62,8 +62,8 @@ public class AddClasseJspController extends HttpServlet {
         writer.println(PAGE_FOOTER);
         writer.close();
         //if classname exist in the database we report repeat error, otherwise we add into the DB
-        if(classeName == null){
-
+        if(classeName != null){
+            classService.addClass(req);
         }else{
 
         }
