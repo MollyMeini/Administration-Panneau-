@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
+    <!--<meta charset="utf-8">-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../index.html">When Is My Code Review?</a>
+                <a class="navbar-brand" href="add_event.jsp">When Is My Code Review?</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -147,10 +147,12 @@
                                                 <tr>
                                                     <th>Nom</th>
                                                     <th>Email</th>
+                                                    <th>Date de Naissance</th>
                                                     <th>classe</th>
                                                     <th class="text-right">Action</th>
                                                 </tr>
                                             </thead>
+<!--TODO: we create a loop for members-->
                                             <tbody>
                                                <tr>
                                                    <td>Lortola</td>
@@ -164,51 +166,6 @@
                                                <tr>
                                                    <td>Alebel</td>
                                                    <td>alebel@e-biz.fr</td>
-                                                   <td>Avril</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>Kbottero</td>
-                                                   <td>kbottero@e-biz.fr</td>
-                                                   <td>Mars</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>rlarroque</td>
-                                                   <td>rlarroque@e-biz.fr</td>
-                                                   <td>Février</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>hdelabatte</td>
-                                                   <td>hdelabatte@e-biz.fr</td>
-                                                   <td>Mars</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>gnostrenoff</td>
-                                                   <td>gnostrenoff@e-biz.fr</td>
-                                                   <td>Mars</td>
-                                                   <td class="text-right">
-                                                       <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                                       <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
-                                                   </td>
-                                               </tr>
-                                               <tr>
-                                                   <td>hbernardi</td>
-                                                   <td>hbernardi@e-biz.fr</td>
                                                    <td>Avril</td>
                                                    <td class="text-right">
                                                        <a href="#" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
@@ -254,7 +211,7 @@
                                 </tr>
 
                             </table>
-                            <a href="#" class="btn btn-default btn-block">Programmer une code review</a>
+                            <a href=add_event.jsp class="btn btn-default btn-block">Programmer une code review</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -280,7 +237,7 @@
 
                             </div>
                             <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">Créer une nouvelle classe</a>
+                            <a href="add_classe.jsp" class="btn btn-default btn-block">Créer une nouvelle classe</a>
                         </div>
                         <!-- /.panel-body -->
                     </div>
