@@ -35,10 +35,6 @@ import java.io.PrintWriter;
 @WebServlet("/AddMember")
 public class AddMemberJspController extends HttpServlet {
 
-    static String PAGE_HEADER = "<html><head><title>helloworld</title></head><body>";
-
-    static String PAGE_FOOTER = "</body></html>";
-
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
@@ -54,13 +50,11 @@ public class AddMemberJspController extends HttpServlet {
 
         resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
-        writer.println(PAGE_HEADER);
         writer.println("<h1>" + name + "</h1>");
         writer.println("<h1>" + email + "</h1>");
         writer.println("<h1>" + birthDate + "</h1>");
         writer.println("<h1>" + classeName + "</h1>");
 
-        writer.println(PAGE_FOOTER);
         writer.close();
         //if classname exist in the database we report repeat error, otherwise we add into the DB
         if(classeName != null){

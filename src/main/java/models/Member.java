@@ -3,19 +3,13 @@ package models;
 import javax.persistence.*;
 import java.sql.Date;
 
-@Entity
-@Table(name="MEMBER")
 public class Member {
 
     //Attributs
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String name;
     private String email;
     private String birthdate;
-    @ManyToOne
-    @JoinColumn(name="classid", nullable=false)
     private Class classe;
 
 
@@ -41,4 +35,5 @@ public class Member {
     public void setEmail(String email) { this.email = email; }
     public void setBirthdate(String birthdate) { this.birthdate = birthdate; }
     public void setClasse(Class classe) { this.classe = classe; }
+    public void setId(int id) { this.id= id; }
 }

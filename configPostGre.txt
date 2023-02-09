@@ -1,0 +1,51 @@
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get -y install postgresql
+
+
+sudo -u postgres psql
+
+create database postgres;
+
+create user myuser with encrypted password 'mypass';
+
+ALTER USER myuser WITH SUPERUSER;
+
+
+use postgres;
+
+create table class(
+    class_id serial PRIMARY KEY,
+    class_name varchar(400) UNIQUE NOT NULL,
+    class_nmembres int NOT NULL
+);
+
+
+create table member(
+    member_id serial PRIMARY KEY,
+    member_name varchar(400) NOT NULL,
+    member_mail varchar(400) UNIQUE NOT NULL,
+    member_birthdate varchar(400) not null,
+    class_id int,
+    CONSTRAINT fk_customer
+          FOREIGN KEY(class_id)
+    	    REFERENCES class(class_id)
+
+);
+
+create table codereview(
+    cr_id serial PRIMARY KEY,
+    cr_name varchar(400) NOT NULL,
+    cr_description varchar(400) NOT NULL,
+    cr_datetime varchar(400) not null,
+    class_id int,
+    CONSTRAINT fk_customer
+          FOREIGN KEY(class_id)
+            REFERENCES class(class_id)
+
+);
+
