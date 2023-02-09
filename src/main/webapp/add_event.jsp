@@ -60,6 +60,10 @@
                                     <div class="form-group">
                                         <label for="classename">classe</label>
                                         <select class="input-lg form-control" id="classename" name="classename">
+                                            <c:forEach items="${listCategory}" var="category">
+                                                <option value="${category.id}">${category.name}</option>
+                                            </c:forEach>
+
                                             <%  ;
                                                 List<Class> classes = classService.getAllClasses();
                                                 for(Class classe:classes){
