@@ -12,7 +12,7 @@ public class Class {
 
     private int class_nmembres;
 
-    private List<Member> memberList;
+//    private List<Member> memberList;
     //Constructors
     public Class() {
     }
@@ -26,14 +26,16 @@ public class Class {
     public String getName() { return class_name; }
     public int getNmembres() { return class_nmembres; }
 
-    public List<Member> getMemberList(){return memberList;}
+    public List<Member> getMemberList(){//TODO
+        return null;
+    }
     //Setters
     public void setName(String name) { this.class_name = name; }
 
     public void setmembres(int nbMemebres) { this.class_nmembres = nbMemebres; }
     public void setId(int id) { this.class_id = id; }
 
-    public void setMemberList(List<Member> memberList){this.memberList=memberList;}
+//    public void setMemberList(List<Member> memberList){this.memberList=memberList;}
 
 
     @Override

@@ -62,7 +62,7 @@ public class ClassDaoImpl implements ClassDao {
             check = true;
             classe.setId(rs.getInt("class_id"));
             classe.setName(rs.getString("class_name"));
-            classe.setMemberList(memberDao.getAllMembersByClass(rs.getInt("class_id")));
+//            classe.setMemberList(memberDao.getAllMembersByClass(rs.getInt("class_id")));
         }
 
         if (check == true) {
@@ -83,7 +83,7 @@ public class ClassDaoImpl implements ClassDao {
             Class classe = new Class();
             classe.setId(rs.getInt("class_id"));
             classe.setName(rs.getString("class_name"));
-            classe.setMemberList(memberDao.getAllMembersByClass(rs.getInt("class_id")));
+//            classe.setMemberList(memberDao.getAllMembersByClass(rs.getInt("class_id")));
             ls.add(classe);
         }
         return ls;
