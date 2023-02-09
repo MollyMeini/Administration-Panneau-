@@ -72,4 +72,8 @@ public class MemberService {
             return null;
         }
     }
+
+    public Member getMember(int id) throws SQLException {
+        return memberDao.getMember(id);
+    }
 }
