@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.takima.master3;
+package controllers;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * <p>
@@ -37,8 +36,8 @@ import java.io.PrintWriter;
  *
  */
 @SuppressWarnings("serial")
-@WebServlet("/AddEvent")
-public class AddEventJspController extends HttpServlet {
+@WebServlet("/helloJsp")
+public class HelloJspController extends HttpServlet {
 
     @Override
     public void init() {
@@ -47,31 +46,15 @@ public class AddEventJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String datetime = req.getParameter("datetime");
-        String classeName = req.getParameter("classname");
-        String description = req.getParameter("description");
+        this.doGet(req, resp);
 
-        resp.setContentType("text/html");
-        PrintWriter writer = resp.getWriter();
-        writer.println("<h1>" + name + "</h1>");
-        writer.println("<h1>" + datetime + "</h1>");
-        writer.println("<h1>" + classeName + "</h1>");
-        writer.println("<h1>" + description + "</h1>");
-        writer.close();
-        //if classname exist in the database we report repeat error, otherwise we add into the DB
-        if(classeName == null){
-
-        }else{
-
-        }
     }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/add_event.jsp");
+
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
             dispatcher.forward(req, resp);
+
     }
 
 }
-

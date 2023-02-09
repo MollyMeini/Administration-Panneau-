@@ -1,4 +1,4 @@
-package io.takima.master3;
+package controllers;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
