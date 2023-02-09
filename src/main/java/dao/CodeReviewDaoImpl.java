@@ -20,13 +20,14 @@ public class CodeReviewDaoImpl implements CodeReviewDao {
 
     @Override
     public void addCodeReview(CodeReview codeReview) throws SQLException {
-        String query = "insert into codereview (cr_name, cr_description, member_birthdate, class_id) VALUES (?,?,?,?)";
+        String query = "insert into codereview (cr_name, cr_description, cr_datetime, class_id) VALUES (?,?,?,?)";
         PreparedStatement ps  = con.prepareStatement(query);
         ps.setString(1, codeReview.getName());
         ps.setString(2, codeReview.getDescription());
         ps.setString(3, codeReview.getDatetime());
         ps.setInt(4, codeReview.getClasse().getId());
         ps.executeUpdate();
+
     }
 
     @Override

@@ -17,7 +17,6 @@ public class ClassDaoImpl implements ClassDao {
 
     @Override
     public void addClass(Class classe) throws SQLException {
-        System.out.println(classe.getName());
         String query = "insert into class (class_name, class_nmembres) VALUES (?,?)";
         PreparedStatement ps  = con.prepareStatement(query);
         ps.setString(1, classe.getName());
@@ -59,7 +58,10 @@ public class ClassDaoImpl implements ClassDao {
             check = true;
             classe.setId(rs.getInt("class_id"));
             classe.setName(rs.getString("class_name"));
+            classe.setNmembres(rs.getInt("class_nmembres"));
+
         }
+
 
         if (check == true) {
             return classe;
@@ -79,6 +81,7 @@ public class ClassDaoImpl implements ClassDao {
             Class classe = new Class();
             classe.setId(rs.getInt("class_id"));
             classe.setName(rs.getString("class_name"));
+            classe.setNmembres(rs.getInt("class_nmembres"));
             ls.add(classe);
         }
         return ls;

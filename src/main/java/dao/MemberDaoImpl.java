@@ -18,6 +18,9 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public void addMember(Member member) throws SQLException {
+        System.out.println("aaaaaa");
+        System.out.println(member.getClasse().getId());
+
         String query = "insert into member (member_name, member_mail, member_birthdate, class_id) VALUES (?,?,?,?)";
         PreparedStatement ps  = con.prepareStatement(query);
         ps.setString(1, member.getName());

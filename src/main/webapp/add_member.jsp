@@ -27,6 +27,9 @@
 </head>
 <%@ include file="header.jsp"%>
 <body>
+
+<% ClassService classService = new ClassService();%>
+
 <div id="wrapper">
     <div id="page-wrapper" class="container-fluid">
         <div class="row">
@@ -58,10 +61,14 @@
                                         <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" placeholder="Date de Naissance">
                                     </div>
                                     <div class="form-group">
-                                        <label for="classename">classeName</label>
-                                        <select class="input-lg form-control" id="classename" name="classename">
-                                            <option value="2">Février</option>
-                                            <option value="3">Mars</option>
+                                        <label for="classname">classe</label>
+                                        <select class="input-lg form-control" id="classname" name="classname">
+                                            <%
+                                                List<Class> classes = classService.getAllClasses();
+                                                for(Class classe:classes){
+                                            %>
+                                            <option  value="<%=classe.getName()%>"><%=classe.getName()%></option>
+                                            <%  } %>
                                         </select>
                                     </div>
 

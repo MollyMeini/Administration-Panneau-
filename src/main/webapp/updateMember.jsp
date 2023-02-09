@@ -51,29 +51,29 @@
                                     <form action="<%= request.getContextPath() %>/updateMember" method="post" class="">
                                         <div class="form-group">
                                             <label for="name">Nom</label>
-                                            <input type="text" class="input-lg form-control" id="name" name="name" value="<%member.getName();%>" placeholder="Nom">
+                                            <input type="text" class="input-lg form-control" id="name" name="name" value="<%=member.getName()%>" placeholder="Nom">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Adresse Email</label>
-                                            <input type="email" class="input-lg form-control" id="email" name="email" value="<%member.getEmail();%>" placeholder="Adresse Email">
+                                            <input type="email" class="input-lg form-control" id="email" name="email" value="<%=member.getEmail()%>" placeholder="Adresse Email">
                                         </div>
                                         <div class="form-group">
                                             <label for="birthdate">Date de Naissance</label>
 
-                                            <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" value="<%member.getBirthdate();%>" placeholder="Date de Naissance">
+                                            <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" value="<%=member.getBirthdate()%>" placeholder="Date de Naissance">
                                         </div>
                                         <div class="form-group">
                                             <label for="classename">classeName</label>
                                             <select class="input-lg form-control" id="classename" name="classename">
-                                                <%  ;
+                                                <%
                                                     List<Class> classes = classService.getAllClasses();
                                                     for(Class classe:classes){
                                                 %>
-                                                <option value="<%classe.getName();%>"><%classe.getName();%></option>
+                                                <option value="<%=classe.getName()%>"><%=classe.getName()%></option>
                                                 <%  } %>
                                             </select>
                                         </div>
-                                        <div><input type="hidden" name="id" value="<%member.getId();%>"></div>
+                                        <div><input type="hidden" name="id" value="<%=member.getId()%>"></div>
 
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>

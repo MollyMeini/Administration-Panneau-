@@ -55,7 +55,6 @@ public class MemberService {
             String className = req.getParameter("classname");
 
             Class classe = classDAO.getClass(className);
-
             Member member = new Member(id, name, email, birthdate, classe);
 
             return member;

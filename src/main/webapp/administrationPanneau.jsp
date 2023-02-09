@@ -1,5 +1,11 @@
 
 <%@ page import="services.ClassService" %>
+<%@ page import="models.Member" %>
+<%@ page import="services.MemberService" %>
+<%@ page import="models.CodeReview" %>
+<%@ page import="services.CodeReviewService" %>
+<%@ page import="java.util.List" %>
+<%@ page import="models.Class" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="fr">
@@ -23,6 +29,11 @@
 </head>
 
 <body>
+<%
+    ClassService classService = new ClassService();
+    MemberService memberService = new MemberService();
+    CodeReviewService codeReviewService = new CodeReviewService();
+%>
 
 <div id="wrapper">
     <%@ include file="header.jsp"%>
@@ -59,8 +70,8 @@
                                 <i class="fa fa-users fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <!--TODO Changer iciii-->
-                                <div class="huge">4</div>
+
+                                <div class="huge"><%=classService.getAllClasses().size()%></div>
                                 <div class="huge-label">classes</div>
                             </div>
                         </div>
@@ -82,8 +93,7 @@
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <!--TODO Changer iciii-->
-                                <div class="huge">46</div>
+                                <div class="huge"><%=memberService.getAllMembers().size()%></div>
                                 <div class="huge-label">Membres inscrits</div>
                             </div>
                         </div>
@@ -105,8 +115,7 @@
                                 <i class="fa fa-calendar fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <!--TODO Changer iciii-->
-                                <div class="huge">3</div>
+                                <div class="huge"><%=codeReviewService.getAllCodeReviews().size()%></div>
                                 <div class="huge-label">Code reviews programmées</div>
                             </div>
                         </div>
@@ -144,27 +153,24 @@
                                             <th class="text-right">Action</th>
                                         </tr>
                                         </thead>
-                                        <!--TODO Changer iciii-->
-                                        <!--TODO: we create a loop for members-->
+
                                         <tbody>
+                                        <%  ;
+                                            List<Member> members = memberService.getAllMembers();
+                                            for(Member member:members){
+                                        %>
                                         <tr>
-                                            <td>Lortola</td>
-                                            <td>lortola@e-biz.fr</td>
-                                            <td>Février</td>
+
+                                            <td><%= member.getName()%>></td>
+                                            <td><%= member.getEmail()%></td>
+                                            <td><%= member.getClasse().getName()%></td>
                                             <td  class="text-right">
                                                 <a href="add_member.jsp" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
                                                 <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Alebel</td>
-                                            <td>alebel@e-biz.fr</td>
-                                            <td>Avril</td>
-                                            <td class="text-right">
-                                                <a href="add_member.jsp" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Modifier</a>
-                                                <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Supprimer</a>
-                                            </td>
-                                        </tr>
+
+                                        <%  } %>
                                         </tbody>
                                     </table>
                                     <div class="text-center">
@@ -192,17 +198,16 @@
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
-                            <!--TODO Changer iciii-->
+                            <%
+                                List<CodeReview> codeReviews = codeReviewService.getAllCodeReviews();
+                                for(CodeReview codeReview:codeReviews){
+                            %>
                             <tr>
-                                <td>Code review 1</td>
-                                <td>Promo Février</td>
-                                <td class="text-right"><span class="text-muted small">24/02/2017</span></td>
+                                <td><%= codeReview.getName()%></td>
+                                <td><%= codeReview.getClasse().getName()%></td>
+                                <td class="text-right"><span class="text-muted small"><%= codeReview.getDatetime()%></span></td>
                             </tr>
-                            <tr>
-                                <td>Code review 2</td>
-                                <td>Promo Février</td>
-                                <td class="text-right"><span class="text-muted small">05/03/2017</span></td>
-                            </tr>
+                            <%  } %>
 
                         </table>
                         <a href=add_event.jsp class="btn btn-default btn-block">Programmer une code review</a>
@@ -218,18 +223,17 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="list-group">
+                            <%
+                                List<Class> classes = classService.getAllClasses();
+                                for(Class classe:classes){
+                            %>
                             <a href="#" class="list-group-item">
-                                <!--TODO Changer iciii-->
-                                <i class="fa fa-users fa-fw"></i> Promo Février
-                                <span class="pull-right text-muted small"><em>8 membres</em>
-                                    </span>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <i class="fa fa-users fa-fw"></i> Promo Mars
-                                <span class="pull-right text-muted small"><em>6 membres</em>
-                                    </span>
-                            </a>
 
+                                <i class="fa fa-users fa-fw"></i> <%= classe.getName()%>
+                                <span class="pull-right text-muted small"><em><%= classe.getNmembres()%> membres</em>
+                                    </span>
+                            </a>
+                            <%  } %>
                         </div>
                         <!-- /.list-group -->
                         <a href="add_classe.jsp" class="btn btn-default btn-block">Cr&eacute;er une nouvelle classe</a>

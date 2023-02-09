@@ -28,9 +28,7 @@
 
 <%@ include file="header.jsp"%>
 <body>
-<% ClassService classService = new ClassService();
-    Member member = (Member)request.getAttribute("member");
-%>
+<% ClassService classService = new ClassService();%>
 <div id="wrapper">
 
     <div id="page-wrapper" class="container-fluid">
@@ -58,17 +56,13 @@
                                         <input type="datetime-local" class="input-lg form-control" id="datetime" name="datetime" placeholder="Date de l'évènement">
                                     </div>
                                     <div class="form-group">
-                                        <label for="classename">classe</label>
-                                        <select class="input-lg form-control" id="classename" name="classename">
-                                            <c:forEach items="${listCategory}" var="category">
-                                                <option value="${category.id}">${category.name}</option>
-                                            </c:forEach>
-
-                                            <%  ;
+                                        <label for="classname">classe</label>
+                                        <select class="input-lg form-control" id="classname" name="classname">
+                                            <%
                                                 List<Class> classes = classService.getAllClasses();
                                                 for(Class classe:classes){
                                             %>
-                                            <option value="<%classe.getName();%>"><%classe.getName();%></option>
+                                            <option  value="<%=classe.getName()%>"><%=classe.getName()%></option>
                                             <%  } %>
                                         </select>
                                     </div>

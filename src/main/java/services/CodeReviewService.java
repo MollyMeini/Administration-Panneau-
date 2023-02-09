@@ -19,7 +19,7 @@ public class CodeReviewService {
             CodeReview cr = this.getFromReq(req);
             codeReviewDAO.addCodeReview(cr);
         }catch (SQLException e){
-
+            System.out.println(e);
         }
     }
 
@@ -45,15 +45,15 @@ public class CodeReviewService {
         try {
             String name = req.getParameter("name");
             String desc = req.getParameter("description");
-            String date = req.getParameter("date");
-            String className = req.getParameter("class");
-
+            String date = req.getParameter("datetime");
+            String className = req.getParameter("classname");
             Class classe = classDAO.getClass(className);
 
             CodeReview cr = new CodeReview(name, desc, date, classe);
 
             return cr;
         }catch (SQLException e){
+
             return null;
         }
     }

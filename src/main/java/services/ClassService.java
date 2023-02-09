@@ -56,7 +56,6 @@ public class ClassService {
             List<Class> ls = classDAO.getAllClasses();
             return ls;
         } catch (SQLException e) {
-            System.out.println("ddd");
             return null;
         }
     }
