@@ -16,6 +16,8 @@
  */
 package io.takima.master3;
 
+import services.ClassService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +44,7 @@ public class AddClasseJspController extends HttpServlet {
     static String PAGE_HEADER = "<html><head><title>helloworld</title></head><body>";
 
     static String PAGE_FOOTER = "</body></html>";
-
+    ClassService classService = new ClassService();
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
@@ -60,8 +62,8 @@ public class AddClasseJspController extends HttpServlet {
         writer.println(PAGE_FOOTER);
         writer.close();
         //if classname exist in the database we report repeat error, otherwise we add into the DB
-        if(classeName == null){
-
+        if(classeName != null){
+            classService.addClass(req);
         }else{
 
         }
