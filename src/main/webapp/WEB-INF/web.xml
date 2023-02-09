@@ -4,15 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-name>Hello World serlvet</display-name>
+    <display-name>StarterCtrl</display-name>
     <servlet>
-        <servlet-name>helloWorldServlet</servlet-name>
-        <servlet-class>controllers.HelloServlet</servlet-class>
+        <servlet-name>StarterCtrl</servlet-name>
+        <servlet-class>controllers.StarterCtrl</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>helloWorldServlet</servlet-name>
-        <url-pattern>/helloServlet</url-pattern>
+        <servlet-name>StarterCtrl</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
 </web-app>
 

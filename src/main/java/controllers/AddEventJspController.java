@@ -16,6 +16,10 @@
  */
 package controllers;
 
+import models.CodeReview;
+import services.ClassService;
+import services.CodeReviewService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,21 +29,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * <p>
- * A simple servlet taking advantage of features added in 3.0.
- * </p>
- *
- * <p>
- * The servlet is registered and mapped to /HelloServlet using the {@linkplain WebServlet
- * @HttpServlet}. The {@link HelloService} is injected by CDI.
- * </p>
- *
- */
 @SuppressWarnings("serial")
 @WebServlet("/AddEvent")
 public class AddEventJspController extends HttpServlet {
-
+    private CodeReviewService codeReviewService = new CodeReviewService();
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
@@ -47,20 +40,11 @@ public class AddEventJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String datetime = req.getParameter("datetime");
-        String classeName = req.getParameter("classname");
-        String description = req.getParameter("description");
-
-        resp.setContentType("text/html");
-        PrintWriter writer = resp.getWriter();
-        writer.println("<h1>" + name + "</h1>");
-        writer.println("<h1>" + datetime + "</h1>");
-        writer.println("<h1>" + classeName + "</h1>");
-        writer.println("<h1>" + description + "</h1>");
-        writer.close();
+        codeReviewService.addCodeReview(req);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
+        dispatcher.forward(req, resp);
         //if classname exist in the database we report repeat error, otherwise we add into the DB
-        if(classeName == null){
+        if(codeReviewService == null){
 
         }else{
 

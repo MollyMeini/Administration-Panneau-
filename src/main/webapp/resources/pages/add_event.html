@@ -2,10 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
 
     <title>When Is My Code Review?</title>
 
@@ -22,36 +19,6 @@
 <body>
 
     <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top container-fluid" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="add_event.jsp">When Is My Code Review?</a>
-            </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle navlink" data-toggle="dropdown" href="#">
-                        <i class="fa fa-gear fa-fw"></i> Gérer les code reviews <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="AddClasse"><i class="fa fa-users fa-fw"></i> Ajouter une classe</a>
-                        </li>
-                        <li><a href="AddMember"><i class="fa fa-user fa-fw"></i> Ajouter un membre</a>
-                        </li>
-                        <li><a href="AddEvent"><i class="fa fa-calendar fa-fw"></i> Créer un rendez-vous</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
 
         <div id="page-wrapper" class="container-fluid">
             <div class="row">
@@ -80,8 +47,12 @@
                                         <div class="form-group">
                                             <label for="classename">classe</label>
                                             <select class="input-lg form-control" id="classename" name="classename">
-                                                <option value="2">Février</option>
-                                                <option value="3">Mars</option>
+                                                <%  ;
+                                                List<Class> classes = classService.getAllClasses();
+                                                for(Class classe:classes){
+                                                %>
+                                                <option value="<%classe.getName();%>"><%classe.getName();%></option>
+                                                <%  } %>
                                             </select>
                                         </div>
                                         <div class="form-group">

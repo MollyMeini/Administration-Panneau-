@@ -28,13 +28,6 @@ import java.io.IOException;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 
-/**
- * <p>
- * The servlet is registered and mapped to /HelloServlet using the {@linkplain WebServlet
- * @HttpServlet}. The {@link HelloService} is injected by CDI.
- * </p>
- *
- */
 @SuppressWarnings("serial")
 @WebServlet("/AddClasse")
 public class AddClasseJspController extends HttpServlet {
@@ -46,7 +39,7 @@ public class AddClasseJspController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             classService.addClass(req);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("administrationPanneau.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
             dispatcher.forward(req, resp);
             //if classname exist in the database we report repeat error, otherwise we add into the DB
 //        if(classeName == null){

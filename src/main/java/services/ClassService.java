@@ -51,7 +51,7 @@ public class ClassService {
         return classe;
     }
 
-    public List<Class> getAllClasses(HttpServletRequest req) {
+    public List<Class> getAllClasses() {
         try {
             List<Class> ls = classDAO.getAllClasses();
             return ls;
