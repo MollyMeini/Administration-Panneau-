@@ -6,6 +6,7 @@ import models.CodeReview;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CodeReviewService {
 
@@ -13,29 +14,56 @@ public class CodeReviewService {
     private ClassDao classDAO = new ClassDaoImpl();
     private CodeReviewDao codeReviewDAO = new CodeReviewDaoImpl();
 
-    public void addCodeReview(HttpServletRequest req) throws SQLException {
-        CodeReview cr = this.getFromReq(req);
-        codeReviewDAO.addCodeReview(cr);
+    public void addCodeReview(HttpServletRequest req) {
+        try {
+            CodeReview cr = this.getFromReq(req);
+            codeReviewDAO.addCodeReview(cr);
+        }catch (SQLException e){
+
+        }
     }
 
-    public void deleteCodeReview(HttpServletRequest req) throws SQLException {
+    public void deleteCodeReview(HttpServletRequest req) {
+        try {
+            int idToDelete = Integer.parseInt(req.getParameter("id"));
+            codeReviewDAO.deleteCodeReview(idToDelete);
+        }catch (SQLException e){
 
+        }
     }
 
-    public void updateCodeReview(HttpServletRequest req) throws SQLException {
+    public void updateCodeReview(HttpServletRequest req) {
+        try {
+            CodeReview cr = this.getFromReq(req);
+            codeReviewDAO.updateCodeReview(cr);
+        }catch (SQLException e){
 
+        }
     }
 
-    private CodeReview getFromReq(HttpServletRequest req) throws SQLException {
-        String name = req.getParameter("name");
-        String desc = req.getParameter("description");
-        String date = req.getParameter("date");
-        String className = req.getParameter("class");
+    private CodeReview getFromReq(HttpServletRequest req) {
+        try {
+            String name = req.getParameter("name");
+            String desc = req.getParameter("description");
+            String date = req.getParameter("date");
+            String className = req.getParameter("class");
 
-        Class classe = classDAO.getClass(className);
+            Class classe = classDAO.getClass(className);
 
-        CodeReview cr = new CodeReview(name, desc, date, classe);
+            CodeReview cr = new CodeReview(name, desc, date, classe);
 
-        return cr;
+            return cr;
+        }catch (SQLException e){
+            return null;
+        }
+    }
+
+    public List<CodeReview> getAllCodeReviews() {
+        try {
+            List<CodeReview> lc = codeReviewDAO.getAllCodeReview();
+            return lc;
+        } catch (SQLException e) {
+            return null;
+        }
     }
 }
