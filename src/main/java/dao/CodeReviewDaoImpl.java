@@ -28,8 +28,11 @@ public class CodeReviewDaoImpl implements CodeReviewDao {
     }
 
     @Override
-    public void deleteCodeReview(CodeReview codeReview) throws SQLException {
-
+    public void deleteCodeReview(int id) throws SQLException {
+        String query= "delete from member where cr_id =?";
+        PreparedStatement ps= con.prepareStatement(query);
+        ps.setInt(1, id);
+        ps.executeUpdate();
     }
 
     @Override

@@ -39,8 +39,6 @@ import java.io.IOException;
 @WebServlet("/helloJsp")
 public class HelloJspController extends HttpServlet {
 
-    HelloService helloService = new HelloService();
-
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
@@ -54,10 +52,9 @@ public class HelloJspController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-            req.setAttribute("helloService", helloService);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
             dispatcher.forward(req, resp);
+
     }
 
 }
