@@ -36,7 +36,7 @@ import java.io.IOException;
  *
  */
 @SuppressWarnings("serial")
-@WebServlet("/helloJsp")
+@WebServlet("/administrationPanneau")
 public class HelloJspController extends HttpServlet {
 
     @Override

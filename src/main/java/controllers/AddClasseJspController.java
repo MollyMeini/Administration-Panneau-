@@ -16,7 +16,9 @@
  */
 package controllers;
 
+import models.Class;
 import dao.ClassDao;
+import dao.ClassDaoImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,7 +27,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLDataException;
+import java.sql.SQLException;
 
 /**
  * <p>
@@ -37,7 +40,7 @@ import java.io.PrintWriter;
 @SuppressWarnings("serial")
 @WebServlet("/AddClasse")
 public class AddClasseJspController extends HttpServlet {
-
+    private ClassDao classDao = new ClassDaoImpl();
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
@@ -45,26 +48,28 @@ public class AddClasseJspController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //this.doGet(req, resp);
+        int id = Integer.parseInt(req.getParameter("id"));
         String classeName = req.getParameter("classname");
         int member = Integer.parseInt(req.getParameter("member"));
 
-        resp.setContentType("text/html");
-        PrintWriter writer = resp.getWriter();
-        writer.println("<h1>" + classeName + "</h1></br>");
-        writer.println("<h1>" + member + "</h1></br>");
-        writer.close();
+        Class classe = new Class();
+        classe.setId(id);
+        classe.setName(classeName);
+        classe.setNmembres(member);
 
-//        try {
-//
-//        } catch () {
-//
-//        }
+        try {
+            classDao.addClass(classe);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //if classname exist in the database we report repeat error, otherwise we add into the DB
         if(classeName == null){
-
+            System.out.println("please enter class name! ");
         }else{
-
+            //System.out.println(classeName);
         }
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/add_classedetail.jsp");
+        dispatcher.forward(req, resp);
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
