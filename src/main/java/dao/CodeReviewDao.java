@@ -3,13 +3,13 @@ package dao;
 import models.Class;
 import models.CodeReview;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface CodeReviewDao {
-    public List<CodeReview> getAllCodeReview();
-    public CodeReview getCodeReview(int id);
-    public CodeReview getCodeReview(String name);
-    public void addCodeReview(CodeReview codeReview);
-    public void updateCodeReview(CodeReview codeReview, String name, String description, String datetime, Class classe);
-    public void deleteCodeReview(CodeReview codeReview);
+    void addCodeReview(CodeReview codeReview) throws SQLException;
+    void deleteCodeReview(CodeReview codeReview) throws SQLException;
+    CodeReview getCodeReview(int id) throws SQLException;
+    List<CodeReview> getAllCodeReview() throws SQLException;
+    void updateCodeReview(CodeReview codeReview) throws SQLException;
 }

@@ -11,14 +11,11 @@ import java.sql.SQLException;
 
 public class ClassService {
 
-//    private MemberDao memberDao = new MemberDaoImpl();
     private ClassDao classDAO = new ClassDaoImpl();
 
     public void addClass(HttpServletRequest req) throws SQLException {
-
         Class classe = this.getFromReq(req);
         classDAO.addClass(classe);
-
     }
 
     private Class getFromReq(HttpServletRequest req){

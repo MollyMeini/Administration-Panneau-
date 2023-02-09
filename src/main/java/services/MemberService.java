@@ -16,11 +16,10 @@ public class MemberService {
 
     private MemberDao memberDao = new MemberDaoImpl();
     private ClassDao classDAO = new ClassDaoImpl();
-    public void addMember(HttpServletRequest req) throws SQLException {
 
+    public void addMember(HttpServletRequest req) throws SQLException {
         Member member = this.getFromReq(req);
         memberDao.addMember(member);
-
     }
 
     private Member getFromReq(HttpServletRequest req) throws SQLException {
