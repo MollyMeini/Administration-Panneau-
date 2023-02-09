@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.takima.master3;
+package controllers;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,21 +37,27 @@ import java.io.PrintWriter;
  *
  */
 @SuppressWarnings("serial")
-@WebServlet("/AddClasse")
-public class AddClasseJspController extends HttpServlet {
+@WebServlet("/AddEvent")
+public class AddEventJspController extends HttpServlet {
+
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //this.doGet(req, resp);
+        String name = req.getParameter("name");
+        String datetime = req.getParameter("datetime");
         String classeName = req.getParameter("classname");
-        int member = Integer.parseInt(req.getParameter("member"));
+        String description = req.getParameter("description");
+
         resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
-        writer.println("<h1>" + classeName + "</h1></br>");
-        writer.println("<h1>" + member + "</h1></br>");
+        writer.println("<h1>" + name + "</h1>");
+        writer.println("<h1>" + datetime + "</h1>");
+        writer.println("<h1>" + classeName + "</h1>");
+        writer.println("<h1>" + description + "</h1>");
         writer.close();
         //if classname exist in the database we report repeat error, otherwise we add into the DB
         if(classeName == null){
@@ -60,15 +66,12 @@ public class AddClasseJspController extends HttpServlet {
 
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            //Search all the info of the class through
-            //put the get info into the Request
-            //req.setAttribute("helloService", helloService);
-            // turn to the add_classe page
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/add_classe.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/add_event.jsp");
             dispatcher.forward(req, resp);
-
     }
 
 }
+

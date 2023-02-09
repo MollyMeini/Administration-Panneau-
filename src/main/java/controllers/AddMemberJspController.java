@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.takima.master3;
+package controllers;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,21 +23,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
- * <p>
- * A simple servlet taking advantage of features added in 3.0.
- * </p>
- *
- * <p>
  * The servlet is registered and mapped to /HelloServlet using the {@linkplain WebServlet
  * @HttpServlet}. The {@link HelloService} is injected by CDI.
  * </p>
  *
  */
 @SuppressWarnings("serial")
-@WebServlet("/helloJsp")
-public class HelloJspController extends HttpServlet {
+@WebServlet("/AddMember")
+public class AddMemberJspController extends HttpServlet {
 
     @Override
     public void init() {
@@ -46,15 +42,33 @@ public class HelloJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doGet(req, resp);
+        //this.doGet(req, resp);
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String birthDate = req.getParameter("birthdate");
+        String classeName = req.getParameter("classname");
 
+        resp.setContentType("text/html");
+        PrintWriter writer = resp.getWriter();
+        writer.println("<h1>" + name + "</h1>");
+        writer.println("<h1>" + email + "</h1>");
+        writer.println("<h1>" + birthDate + "</h1>");
+        writer.println("<h1>" + classeName + "</h1>");
+
+        writer.close();
+        //if classname exist in the database we report repeat error, otherwise we add into the DB
+        if(classeName != null){
+            System.out.println(" receive data");
+        }else{
+
+        }
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
-            dispatcher.forward(req, resp);
 
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
+            dispatcher.forward(req, resp);
     }
 
 }

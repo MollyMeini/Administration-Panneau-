@@ -1,4 +1,4 @@
-package io.takima.master3;
+package controllers;
 
 public class HelloService {
 
