@@ -11,24 +11,19 @@ public class CodeReviewService {
 
     private MemberDao memberDao = new MemberDaoImpl();
     private ClassDao classDAO = new ClassDaoImpl();
-
     private CodeReviewDao codeReviewDAO = new CodeReviewDaoImpl();
 
     public void addCodeReview(HttpServletRequest req) throws SQLException {
-
         CodeReview cr = this.getFromReq(req);
         codeReviewDAO.addCodeReview(cr);
-
     }
 
     public void deleteCodeReview(HttpServletRequest req) throws SQLException {
-        CodeReview cr = this.getFromReq(req);
-        codeReviewDAO.deleteCodeReview(cr);
+
     }
 
     public void updateCodeReview(HttpServletRequest req) throws SQLException {
-        CodeReview cr = this.getFromReq(req);
-        codeReviewDAO.updateCodeReview(cr, cr.getName(), cr.getDescription(), cr.getDatetime(), cr.getClasse());
+
     }
 
     private CodeReview getFromReq(HttpServletRequest req) throws SQLException {
