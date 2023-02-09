@@ -48,14 +48,15 @@ public class MemberService {
 
     private Member getFromReq(HttpServletRequest req) {
         try {
+            String id  = req.getParameter("id");
             String name = req.getParameter("name");
             String email = req.getParameter("email");
             String birthdate = req.getParameter("birthdate");
-            String className = req.getParameter("class");
+            String className = req.getParameter("classname");
 
             Class classe = classDAO.getClass(className);
 
-            Member member = new Member(name, email, birthdate, classe);
+            Member member = new Member(id, name, email, birthdate, classe);
 
             return member;
         }catch (SQLException e){
@@ -70,5 +71,9 @@ public class MemberService {
         } catch (SQLException e) {
             return null;
         }
+    }
+
+    public Member getMember(int id) throws SQLException {
+        return memberDao.getMember(id);
     }
 }

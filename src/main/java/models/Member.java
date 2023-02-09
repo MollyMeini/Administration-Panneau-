@@ -23,6 +23,9 @@ public class Member {
         this.classe = classe;
     }
 
+    public Member(String id, String name, String email, String birthdate, Class classe) {
+    }
+
     //Getters
     public int getId() { return id; }
     public String getName() { return name; }

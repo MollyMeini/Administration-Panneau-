@@ -1,26 +1,28 @@
-<!DOCTYPE html>
+<%@ page import="models.Member" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <title>When Is My Code Review?</title>
+        <title>When Is My Code Review?</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap CSS -->
+        <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="./resources/css/style.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="./resources/css/style.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-</head>
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    </head>
 
-<body>
-
+    <body>
+    <%= ((Member)request.getAttribute("member")).getName()%>
     <div id="wrapper">
 
         <div id="page-wrapper" class="container-fluid">
@@ -38,24 +40,24 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <form action="<%= request.getContextPath() %>/AddMember" method="post" class="">
+                                    <form action="<%= request.getContextPath() %>/updateMember" method="post" class="">
                                         <div class="form-group">
                                             <label for="name">Nom</label>
-                                            <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
+                                            <input type="text" class="input-lg form-control" id="name" name="name" value="<%= ((Member)request.getAttribute("member")).getName()%>" Nom">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Adresse Email</label>
-                                            <input type="email" class="input-lg form-control" id="email" name="email" placeholder="Adresse Email">
+                                            <input type="email" class="input-lg form-control" id="email" name="email" value="<%= ((Member)request.getAttribute("member")).getEmail()%>" placeholder="Adresse Email">
                                         </div>
                                         <div class="form-group">
                                             <label for="birthdate">Date de Naissance</label>
 
-                                            <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" placeholder="Date de Naissance">
+                                            <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" value="<%= ((Member)request.getAttribute("member")).getBirthdate()%>" placeholder="Date de Naissance">
                                         </div>
                                         <div class="form-group">
                                             <label for="classename">classeName</label>
-                                            <select class="input-lg form-control" id="classename" name="classename">
-                                                <option value="2">FÃ©vrier</option>
+                                            <select class="input-lg form-control" id="classename" value="<%= ((Member)request.getAttribute("member")).getClasse().getName()%>" name="classename">
+                                                <option value="2">Février</option>
                                                 <option value="3">Mars</option>
                                             </select>
                                         </div>
@@ -79,14 +81,6 @@
         <!-- /#page-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row text-center">
-                <img src="./resources/img/ebusiness.png" class="logo" alt=""> &bullet; 2023
-            </div>
-        </div>
-    </footer>
 
     <!-- jQuery -->
     <script src="../js/jquery-3.1.1.min.js"></script>
@@ -94,6 +88,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
-</body>
+    </body>
 
 </html>
