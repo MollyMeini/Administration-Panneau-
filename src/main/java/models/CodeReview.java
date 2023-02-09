@@ -34,4 +34,5 @@ public class CodeReview {
     public void setDescription(String description) { this.description = description; }
     public void setDatetime(String datetime) { this.datetime = datetime; }
     public void setClasse(Class classe) { this.classe = classe; }
+    public void setId(int id) { this.id = id; }
 }

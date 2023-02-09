@@ -31,7 +31,7 @@ public class Class {
 
     //Setters
     public void setName(String name) { this.class_name = name; }
-    public void setmembres(int nbMemebres) { this.class_nmembres = nbMemebres; }
+    public void setNmembres(int nbMemebres) { this.class_nmembres = nbMemebres; }
     public void setId(int id) { this.class_id = id; }
 
     @Override
