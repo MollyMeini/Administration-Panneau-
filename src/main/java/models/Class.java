@@ -1,6 +1,10 @@
 package models;
 
 
+import dao.MemberDao;
+import dao.MemberDaoImpl;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +15,9 @@ public class Class {
     private String class_name;
 
     private int class_nmembres;
+
+
+    private MemberDao memberDao = new MemberDaoImpl();
 
 //    private List<Member> memberList;
     //Constructors
@@ -42,6 +49,12 @@ public class Class {
     public String toString()
     {
         return "Class [class_id=" + class_id + ", class_name=" + class_name  + "]";
+    }
+
+    public List<Member> getMembers(Class classe) throws SQLException {
+
+        return memberDao.getAllMembersByClass(classe.getId());
+
     }
 
 }

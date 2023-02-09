@@ -63,7 +63,7 @@ public class AddClasseJspController extends HttpServlet {
         writer.close();
         //if classname exist in the database we report repeat error, otherwise we add into the DB
         if(classeName != null){
-            classService.addClass(req);
+
         }else{
 
         }

@@ -1,6 +1,7 @@
 package dao;
 
 import models.Class;
+import models.Member;
 import utils.DbConnection;
 
 import java.sql.Connection;
@@ -83,7 +84,6 @@ public class ClassDaoImpl implements ClassDao {
             Class classe = new Class();
             classe.setId(rs.getInt("class_id"));
             classe.setName(rs.getString("class_name"));
-//            classe.setMemberList(memberDao.getAllMembersByClass(rs.getInt("class_id")));
             ls.add(classe);
         }
         return ls;
@@ -98,6 +98,8 @@ public class ClassDaoImpl implements ClassDao {
         ps.setInt(2, classe.getId());
         ps.executeUpdate();
     }
+
+
 
     //list is working as a database
 //    List<Class> classes;

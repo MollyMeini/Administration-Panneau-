@@ -1,6 +1,7 @@
 package dao;
 
 import models.Class;
+import models.Member;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -17,6 +18,7 @@ public interface ClassDao {
     List<Class> getAllClasses() throws SQLException;
 
     void updateClass(Class classe) throws SQLException;
+
 //    public List<Class> getAllClasses() throws SQLException;
 //    public Class getClass(int id);
 //
