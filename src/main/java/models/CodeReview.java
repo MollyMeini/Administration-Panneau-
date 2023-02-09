@@ -2,19 +2,14 @@ package models;
 
 import javax.persistence.*;
 import java.sql.Date;
-@Entity
-@Table(name="CODEREVIEW")
+
 public class CodeReview {
 
     //Attributs
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
     private String name;
     private String description;
     private String datetime;
-    @ManyToOne
-    @JoinColumn(name="classid", nullable=false)
     private Class classe;
 
     //Constructors

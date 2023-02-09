@@ -3,7 +3,6 @@ package models;
 import javax.persistence.*;
 import java.sql.Date;
 
-
 public class Member {
 
     //Attributs
@@ -36,6 +35,5 @@ public class Member {
     public void setEmail(String email) { this.email = email; }
     public void setBirthdate(String birthdate) { this.birthdate = birthdate; }
     public void setClasse(Class classe) { this.classe = classe; }
-
     public void setId(int id) { this.id= id; }
 }
