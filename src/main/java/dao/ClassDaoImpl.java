@@ -15,8 +15,6 @@ public class ClassDaoImpl implements ClassDao {
 
     static Connection con = DbConnection.getConnection();
 
-    private MemberDao memberDao = new MemberDaoImpl();
-
     @Override
     public void addClass(Class classe) throws SQLException {
         System.out.println(classe.getName());

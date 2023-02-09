@@ -54,11 +54,11 @@ public class AddClasseJspController extends HttpServlet {
         writer.println("<h1>" + member + "</h1></br>");
         writer.close();
 
-        try {
-
-        } catch () {
-
-        }
+//        try {
+//
+//        } catch () {
+//
+//        }
         //if classname exist in the database we report repeat error, otherwise we add into the DB
         if(classeName == null){
 
