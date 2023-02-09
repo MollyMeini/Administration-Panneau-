@@ -1,4 +1,9 @@
 <%@ page import="models.Member" %>
+<%@ page import="services.ClassService" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="models.Class" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="fr">
@@ -22,7 +27,10 @@
     </head>
 
     <body>
-    <%= ((Member)request.getAttribute("member")).getName()%>
+    <% ClassService classService = new ClassService();
+        Member member = (Member)request.getAttribute("member");
+    %>
+
     <div id="wrapper">
 
         <div id="page-wrapper" class="container-fluid">
@@ -43,24 +51,29 @@
                                     <form action="<%= request.getContextPath() %>/updateMember" method="post" class="">
                                         <div class="form-group">
                                             <label for="name">Nom</label>
-                                            <input type="text" class="input-lg form-control" id="name" name="name" value="<%= ((Member)request.getAttribute("member")).getName()%>" Nom">
+                                            <input type="text" class="input-lg form-control" id="name" name="name" value="<%member.getName();%>" placeholder="Nom">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Adresse Email</label>
-                                            <input type="email" class="input-lg form-control" id="email" name="email" value="<%= ((Member)request.getAttribute("member")).getEmail()%>" placeholder="Adresse Email">
+                                            <input type="email" class="input-lg form-control" id="email" name="email" value="<%member.getEmail();%>" placeholder="Adresse Email">
                                         </div>
                                         <div class="form-group">
                                             <label for="birthdate">Date de Naissance</label>
 
-                                            <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" value="<%= ((Member)request.getAttribute("member")).getBirthdate()%>" placeholder="Date de Naissance">
+                                            <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" value="<%member.getBirthdate();%>" placeholder="Date de Naissance">
                                         </div>
                                         <div class="form-group">
                                             <label for="classename">classeName</label>
-                                            <select class="input-lg form-control" id="classename" value="<%= ((Member)request.getAttribute("member")).getClasse().getName()%>" name="classename">
-                                                <option value="2">Février</option>
-                                                <option value="3">Mars</option>
+                                            <select class="input-lg form-control" id="classename" name="classename">
+                                                <%  ;
+                                                    List<Class> classes = classService.getAllClasses();
+                                                    for(Class classe:classes){
+                                                %>
+                                                <option value="<%classe.getName();%>"><%classe.getName();%></option>
+                                                <%  } %>
                                             </select>
                                         </div>
+                                        <div><input type="hidden" name="id" value="<%member.getId();%>"></div>
 
                                         <div class="text-right">
                                             <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>

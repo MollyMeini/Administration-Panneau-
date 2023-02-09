@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Member;
+import services.ClassService;
 import services.MemberService;
 
 import javax.servlet.RequestDispatcher;
