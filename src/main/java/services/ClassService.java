@@ -2,8 +2,6 @@ package services;
 
 import dao.ClassDao;
 import dao.ClassDaoImpl;
-import dao.MemberDao;
-import dao.MemberDaoImpl;
 import models.Class;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +51,7 @@ public class ClassService {
         return classe;
     }
 
-    public List<Class> getAllClasses() {
+    public List<Class> getAllClasses(HttpServletRequest req) {
         try {
             List<Class> ls = classDAO.getAllClasses();
             return ls;

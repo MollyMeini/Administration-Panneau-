@@ -16,6 +16,8 @@
  */
 package controllers;
 
+import services.ClassService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +40,7 @@ import java.io.IOException;
 @SuppressWarnings("serial")
 @WebServlet("/administrationPanneau")
 public class HelloJspController extends HttpServlet {
-
+    private ClassService classService = new ClassService();
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
@@ -46,7 +48,10 @@ public class HelloJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.doGet(req, resp);
+        classService.getAllClasses(req);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/");
+        dispatcher.forward(req, resp);
+
 
     }
     @Override
