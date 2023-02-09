@@ -9844,3 +9844,47 @@ WFLYCTL0448: 2 additional services are down due to their dependencies being miss
 2023-02-09 15:16:17,312 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 85) WFLYDR0002: Content removed from location /home/takima/Bureau/Piscine/Administration-Panneau-/wildfly-26.1.3.Final/standalone/data/content/0e/24499bdc1cfc396b91c4331604e0acc2365f1e/content
 2023-02-09 15:16:17,313 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 85) WFLYDR0009: Content /home/takima/Bureau/Piscine/Administration-Panneau-/wildfly-26.1.3.Final/standalone/data/content/f5/0e6c5cbf8d8dff6169859e284e6721265b9c2e is obsolete and will be removed
 2023-02-09 15:16:17,315 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 85) WFLYDR0002: Content removed from location /home/takima/Bureau/Piscine/Administration-Panneau-/wildfly-26.1.3.Final/standalone/data/content/f5/0e6c5cbf8d8dff6169859e284e6721265b9c2e/content
+2023-02-09 15:31:35,273 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-2) WFLYDS0013: Started FileSystemDeploymentService for directory /home/takima/Documents/Administration-Panneau-/wildfly-26.1.3.Final/standalone/deployments
+2023-02-09 15:31:35,278 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) WFLYSRV0027: Starting deployment of "helloworld.war" (runtime-name: "helloworld.war")
+2023-02-09 15:31:35,315 INFO  [org.jboss.ws.common.management] (MSC service thread 1-5) JBWS022052: Starting JBossWS 5.5.0.Final (Apache CXF 3.4.10) 
+2023-02-09 15:31:35,869 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.5)
+2023-02-09 15:31:35,900 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) WFLYJCA0018: Started Driver service with driver-name = helloworld.war_org.postgresql.Driver_42_5
+2023-02-09 15:31:36,041 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 78) ISPN000128: Infinispan version: Infinispan 'Triskaidekaphobia' 13.0.10.Final
+2023-02-09 15:31:36,092 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 78) ISPN000556: Starting user marshaller 'org.wildfly.clustering.infinispan.spi.marshalling.InfinispanProtoStreamMarshaller'
+2023-02-09 15:31:36,340 INFO  [org.infinispan.CONFIG] (MSC service thread 1-8) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+2023-02-09 15:31:36,341 INFO  [org.infinispan.CONFIG] (MSC service thread 1-8) ISPN000152: Passivation configured without an eviction policy being selected. Only manually evicted entities will be passivated.
+2023-02-09 15:31:36,347 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 78) ISPN000025: wakeUpInterval is <= 0, not starting expired purge thread
+2023-02-09 15:31:36,349 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 78) WFLYCLINF0002: Started http-remoting-connector cache from ejb container
+2023-02-09 15:31:36,410 INFO  [stdout] (ServerService Thread Pool -- 84) Servlet initialized successfully
+2023-02-09 15:31:36,410 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 84) WFLYUT0021: Registered web context: '/helloworld' for server 'default-server'
+2023-02-09 15:31:36,457 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 45) WFLYSRV0010: Deployed "helloworld.war" (runtime-name : "helloworld.war")
+2023-02-09 15:31:36,493 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+2023-02-09 15:31:36,495 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 26.1.3.Final (WildFly Core 18.1.2.Final) started in 3419ms - Started 420 of 622 services (341 services are lazy, passive or on-demand) - Server configuration file in use: standalone.xml
+2023-02-09 15:31:36,496 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+2023-02-09 15:31:36,496 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+2023-02-09 15:31:44,628 INFO  [stdout] (default task-1) Servlet initialized successfully
+2023-02-09 15:32:26,089 INFO  [stdout] (default task-4) Servlet initialized successfully
+2023-02-09 15:32:26,092 INFO  [stdout] (default task-4) ddddd
+2023-02-09 15:33:04,413 INFO  [stdout] (default task-1) MMMMo
+2023-02-09 15:33:27,483 INFO  [stdout] (default task-3) 
+2023-02-09 15:35:22,508 INFO  [stdout] (default task-3) 
+2023-02-09 15:35:22,514 INFO  [stdout] (default task-3) aaa
+2023-02-09 15:36:41,786 INFO  [stdout] (default task-4) ddddd
+2023-02-09 15:36:41,788 INFO  [stdout] (default task-4) aaa
+2023-02-09 15:38:25,002 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0272: Suspending server
+2023-02-09 15:38:25,003 INFO  [org.jboss.as.ejb3] (Thread-1) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+2023-02-09 15:38:25,007 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0220: Server shutdown has been requested via an OS signal
+2023-02-09 15:38:25,014 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0019: Stopped Driver service with driver-name = helloworld.war_org.postgresql.Driver_42_5
+2023-02-09 15:38:25,022 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) WFLYMAIL0002: Unbound mail session [java:jboss/mail/Default]
+2023-02-09 15:38:25,024 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 84) WFLYUT0022: Unregistered web context: '/helloworld' from server 'default-server'
+2023-02-09 15:38:25,041 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0019: Host default-host stopping
+2023-02-09 15:38:25,042 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+2023-02-09 15:38:25,043 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0019: Stopped Driver service with driver-name = h2
+2023-02-09 15:38:25,049 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 89) WFLYCLINF0003: Stopped http-remoting-connector cache from ejb container
+2023-02-09 15:38:25,059 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0008: Undertow HTTPS listener https suspending
+2023-02-09 15:38:25,059 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0008: Undertow HTTP listener default suspending
+2023-02-09 15:38:25,059 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0007: Undertow HTTPS listener https stopped, was bound to 127.0.0.1:8443
+2023-02-09 15:38:25,059 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0007: Undertow HTTP listener default stopped, was bound to 127.0.0.1:8080
+2023-02-09 15:38:25,060 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0004: Undertow 2.2.19.Final stopping
+2023-02-09 15:38:25,067 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0028: Stopped deployment helloworld.war (runtime-name: helloworld.war) in 58ms
+2023-02-09 15:38:25,072 INFO  [org.jboss.as] (MSC service thread 1-3) WFLYSRV0050: WildFly Full 26.1.3.Final (WildFly Core 18.1.2.Final) stopped in 60ms

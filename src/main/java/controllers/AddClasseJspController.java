@@ -16,9 +16,7 @@
  */
 package controllers;
 
-import models.Class;
-import dao.ClassDao;
-import dao.ClassDaoImpl;
+import services.ClassService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,36 +38,24 @@ import java.sql.SQLException;
 @SuppressWarnings("serial")
 @WebServlet("/AddClasse")
 public class AddClasseJspController extends HttpServlet {
-    private ClassDao classDao = new ClassDaoImpl();
+    private ClassService classService = new ClassService();
     @Override
     public void init() {
         System.out.println("Servlet initialized successfully");
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //this.doGet(req, resp);
-        int id = Integer.parseInt(req.getParameter("id"));
-        String classeName = req.getParameter("classname");
-        int member = Integer.parseInt(req.getParameter("member"));
+            classService.addClass(req);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("administrationPanneau.jsp");
+            dispatcher.forward(req, resp);
+            //if classname exist in the database we report repeat error, otherwise we add into the DB
 
-        Class classe = new Class();
-        classe.setId(id);
-        classe.setName(classeName);
-        classe.setNmembres(member);
+//        if(classeName == null){
+//
+//        }else{
+//            System.out.println(classeName);
+//        }
 
-        try {
-            classDao.addClass(classe);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        //if classname exist in the database we report repeat error, otherwise we add into the DB
-        if(classeName == null){
-            System.out.println("please enter class name! ");
-        }else{
-            //System.out.println(classeName);
-        }
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/add_classedetail.jsp");
-        dispatcher.forward(req, resp);
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
