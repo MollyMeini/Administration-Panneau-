@@ -49,13 +49,11 @@ public class AddClasseJspController extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("administrationPanneau.jsp");
             dispatcher.forward(req, resp);
             //if classname exist in the database we report repeat error, otherwise we add into the DB
-
 //        if(classeName == null){
 //
 //        }else{
 //            System.out.println(classeName);
 //        }
-
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
