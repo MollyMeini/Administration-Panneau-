@@ -19,12 +19,24 @@ public class MemberService {
     private MemberDao memberDao = new MemberDaoImpl();
     private ClassDao classDAO = new ClassDaoImpl();
 
-    public void addMember(HttpServletRequest req) {
+    public String addMember(HttpServletRequest req) {
         try {
             Member member = this.getFromReq(req);
-            memberDao.addMember(member);
-        }catch (SQLException e){
 
+            //On vérifie que le nombre max de personnes dans la classe n'est pas dépassé :
+
+            List<Member> memberList = memberDao.getAllMembersByClass(member.getClasse().getId());
+            if(memberList.size()>=member.getClasse().getNmembres()){
+                return "cette classe est déja pleine";
+            }
+            else {
+                memberDao.addMember(member);
+                return "ok";
+            }
+
+
+        }catch (SQLException e){
+            return "cet email existe déjà";
         }
     }
 
@@ -37,26 +49,34 @@ public class MemberService {
         }
     }
 
-    public void updateMember(HttpServletRequest req) {
+    public String updateMember(HttpServletRequest req) {
         try {
             Member member = this.getFromReq(req);
             memberDao.updateMember(member);
+            return "ok";
         }catch (SQLException e){
-
+            return "cet email existe déjà";
         }
     }
 
     private Member getFromReq(HttpServletRequest req) {
         try {
-            String id  = req.getParameter("id");
+            String idStr = req.getParameter("id");
             String name = req.getParameter("name");
             String email = req.getParameter("email");
             String birthdate = req.getParameter("birthdate");
             String className = req.getParameter("classname");
 
             Class classe = classDAO.getClass(className);
-            Member member = new Member(id, name, email, birthdate, classe);
+            Member member;
 
+            System.out.println(className);
+            if(idStr!=null){
+                int id= Integer.parseInt(idStr);
+                member = new Member(id, name, email, birthdate, classe);
+            }else{
+                member = new Member(name, email, birthdate, classe);
+            }
             return member;
         }catch (SQLException e){
             return null;

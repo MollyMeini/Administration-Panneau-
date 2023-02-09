@@ -3,6 +3,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="models.Class" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,7 +34,13 @@
 <body>
 
 <% ClassService classService = new ClassService();%>
-
+<%
+    Date date = Calendar.getInstance().getTime();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    String today = dateFormat.format(date);
+//    today = today.replace(" ", "T");
+    System.out.println(today);
+%>
 <div id="wrapper">
     <div id="page-wrapper" class="container-fluid">
         <div class="row">
@@ -49,20 +60,20 @@
                                 <form action="<%= request.getContextPath() %>/AddMember" method="post" class="">
                                     <div class="form-group">
                                         <label for="name">Nom</label>
-                                        <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
+                                        <input required type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Adresse Email</label>
-                                        <input type="email" class="input-lg form-control" id="email" name="email" placeholder="Adresse Email">
+                                        <input required type="email" class="input-lg form-control" id="email" name="email" placeholder="Adresse Email">
                                     </div>
                                     <div class="form-group">
                                         <label for="birthdate">Date de Naissance</label>
 
-                                        <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" placeholder="Date de Naissance">
+                                        <input required type="date" class="input-lg form-control" id="birthdate" name="birthdate" placeholder="Date de Naissance" min="1900-01-01" max="<%=today%>">
                                     </div>
                                     <div class="form-group">
                                         <label for="classname">classe</label>
-                                        <select class="input-lg form-control" id="classname" name="classname">
+                                        <select required class="input-lg form-control" id="classname" name="classname">
                                             <%
                                                 List<Class> classes = classService.getAllClasses();
                                                 for(Class classe:classes){
@@ -77,6 +88,11 @@
                                     </div>
                                 </form>
                             </div>
+                            <% if(request.getAttribute("error")!=null){%>
+                            <p>
+                                <%= request.getAttribute("error") %>
+                            </p>
+                            <%}%>
                         </div>
                         <!-- /.row -->
                     </div>

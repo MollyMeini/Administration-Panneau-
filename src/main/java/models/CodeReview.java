@@ -18,7 +18,7 @@ public class CodeReview {
     public CodeReview(String name, String description, String datetime, Class classe) {
         this.name = name;
         this.description = description;
-        this.datetime = datetime;
+        this.datetime = datetime.replace("T", " ");
         this.classe = classe;
     }
 

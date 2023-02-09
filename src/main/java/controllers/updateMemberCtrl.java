@@ -20,7 +20,17 @@ public class updateMemberCtrl extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        memberService.updateMember(req);
+
+        String error = memberService.updateMember(req);
+        if(error.equals("ok")){
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
+            dispatcher.forward(req, resp);
+        }
+        else {
+            req.setAttribute("error", error);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/updateMember.jsp?id="+req.getParameter("id"));
+            dispatcher.forward(req, resp);
+        }
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

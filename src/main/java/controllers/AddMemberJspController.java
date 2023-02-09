@@ -37,14 +37,16 @@ public class AddMemberJspController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        memberService.addMember(req);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
-        dispatcher.forward(req, resp);
-        //if classname exist in the database we report repeat error, otherwise we add into the DB
-        if(memberService != null){
-            System.out.println(" receive data");
-        }else{
 
+        String error = memberService.addMember(req);
+        if(error.equals("ok")){
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
+            dispatcher.forward(req, resp);
+        }
+        else {
+            req.setAttribute("error", error);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
+            dispatcher.forward(req, resp);
         }
     }
     @Override

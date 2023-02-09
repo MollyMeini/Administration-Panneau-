@@ -49,19 +49,26 @@
                                 <form action="<%= request.getContextPath() %>/AddClasse" method="post" class="">
                                     <div class="form-group">
                                         <label for="classname">Nom de Classe</label>
-                                        <input type="text" class="input-lg form-control" id="classname" name="classname"  placeholder="Nom de Classe">
+                                        <input required type="text" class="input-lg form-control" id="classname" name="classname"  placeholder="Nom de Classe">
                                     </div>
                                     <div class="form-group">
                                         <label for="member">Nombre de Membres</label>
-                                        <input type="number" class="input-lg form-control" id="member" name="member" placeholder="Nombre de Membres">
+                                        <input required type="number" min="0" class="input-lg form-control" id="member" name="member" placeholder="Nombre de Membres">
 
                                     </div>
 
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
                                     </div>
+
+
                                 </form>
                             </div>
+                            <% if(request.getAttribute("error")!=null){%>
+                            <p>
+                                <%= request.getAttribute("error") %>
+                            </p>
+                            <%}%>
                         </div>
                         <!-- /.row -->
                     </div>

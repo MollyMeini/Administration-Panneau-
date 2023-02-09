@@ -38,9 +38,19 @@ public class AddClasseJspController extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            classService.addClass(req);
+
+
+        String error = classService.addClass(req);
+        if(error.equals("ok")){
             RequestDispatcher dispatcher = req.getRequestDispatcher("/administrationPanneau.jsp");
             dispatcher.forward(req, resp);
+        }
+        else {
+            req.setAttribute("error", error);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/add_classe.jsp");
+            dispatcher.forward(req, resp);
+        }
+
             //if classname exist in the database we report repeat error, otherwise we add into the DB
 //        if(classeName == null){
 //

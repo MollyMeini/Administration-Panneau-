@@ -12,12 +12,14 @@ public class ClassService {
 
     private ClassDao classDAO = new ClassDaoImpl();
 
-    public void addClass(HttpServletRequest req) {
+    public String addClass(HttpServletRequest req) {
         try {
             Class classe = this.getFromReq(req);
             classDAO.addClass(classe);
+            return "ok";
         }catch (SQLException e){
             System.out.println("aaa");
+            return "ce nom de classe existe déjà";
         }
     }
 

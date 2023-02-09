@@ -3,6 +3,10 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="models.Class" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,7 +32,14 @@
 
 <%@ include file="header.jsp"%>
 <body>
-<% ClassService classService = new ClassService();%>
+<%
+    ClassService classService = new ClassService();
+    Date date = Calendar.getInstance().getTime();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    String today = dateFormat.format(date);
+    today = today.replace(" ", "T");
+    System.out.println(today);
+%>
 <div id="wrapper">
 
     <div id="page-wrapper" class="container-fluid">
@@ -49,15 +60,15 @@
                                 <form action="<%= request.getContextPath() %>/AddEvent" method="post" class="">
                                     <div class="form-group">
                                         <label for="name">Nom</label>
-                                        <input type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
+                                        <input required type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
                                     </div>
                                     <div class="form-group">
                                         <label for="datetime">Date</label>
-                                        <input type="datetime-local" class="input-lg form-control" id="datetime" name="datetime" placeholder="Date de l'évènement">
+                                        <input required type="datetime-local" class="input-lg form-control" id="datetime" name="datetime" placeholder="Date de l'évènement" min=<%=today%>>
                                     </div>
                                     <div class="form-group">
                                         <label for="classname">classe</label>
-                                        <select class="input-lg form-control" id="classname" name="classname">
+                                        <select required class="input-lg form-control" id="classname" name="classname">
                                             <%
                                                 List<Class> classes = classService.getAllClasses();
                                                 for(Class classe:classes){

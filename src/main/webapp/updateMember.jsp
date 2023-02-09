@@ -51,20 +51,20 @@
                                     <form action="<%= request.getContextPath() %>/updateMember" method="post" class="">
                                         <div class="form-group">
                                             <label for="name">Nom</label>
-                                            <input type="text" class="input-lg form-control" id="name" name="name" value="<%=member.getName()%>" placeholder="Nom">
+                                            <input required type="text" class="input-lg form-control" id="name" name="name" value="<%=member.getName()%>" placeholder="Nom">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Adresse Email</label>
-                                            <input type="email" class="input-lg form-control" id="email" name="email" value="<%=member.getEmail()%>" placeholder="Adresse Email">
+                                            <input required type="email" class="input-lg form-control" id="email" name="email" value="<%=member.getEmail()%>" placeholder="Adresse Email">
                                         </div>
                                         <div class="form-group">
                                             <label for="birthdate">Date de Naissance</label>
 
-                                            <input type="date" class="input-lg form-control" id="birthdate" name="birthdate" value="<%=member.getBirthdate()%>" placeholder="Date de Naissance">
+                                            <input required type="date" class="input-lg form-control" id="birthdate" name="birthdate" value="<%=member.getBirthdate()%>" placeholder="Date de Naissance" min="1900-01-01" max="2004-01-01">
                                         </div>
                                         <div class="form-group">
-                                            <label for="classename">classeName</label>
-                                            <select class="input-lg form-control" id="classename" name="classename">
+                                            <label for="classname">classeName</label>
+                                            <select class="input-lg form-control" id="classname" name="classname">
                                                 <%
                                                     List<Class> classes = classService.getAllClasses();
                                                     for(Class classe:classes){

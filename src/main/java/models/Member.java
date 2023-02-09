@@ -23,7 +23,17 @@ public class Member {
         this.classe = classe;
     }
 
-    public Member(String id, String name, String email, String birthdate, Class classe) {
+    public Member(int  id, String name, String email, String birthdate, Class classe) {
+
+        this.id= id;
+        this.name = name;
+        this.email = email;
+        this.birthdate = birthdate;
+        this.classe = classe;
+
+
+
+
     }
 
     //Getters
