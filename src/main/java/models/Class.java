@@ -1,31 +1,45 @@
 package models;
 
-import javax.persistence.*;
-import java.util.Set;
 
-@Entity
-@Table(name="CLASS")
+import java.util.ArrayList;
+import java.util.List;
+
 public class Class {
 
     //Attributs
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
-    private String name;
-    @OneToMany(mappedBy="class")
-    private Set<Member> members;
+    private int class_id;
+    private String class_name;
 
+    private int class_nmembres;
+
+    private List<Member> memberList;
     //Constructors
     public Class() {
     }
-    public Class(String name) {
-        this.name = name;
+    public Class(String class_name, int class_nmembres) {
+        this.class_name = class_name;
+        this.class_nmembres = class_nmembres;
     }
 
     //Getters
-    public int getId() { return id; }
-    public String getName() { return name; }
+    public int getId() { return class_id; }
+    public String getName() { return class_name; }
+    public int getNmembres() { return class_nmembres; }
 
+    public List<Member> getMemberList(){return memberList;}
     //Setters
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) { this.class_name = name; }
+
+    public void setmembres(int nbMemebres) { this.class_nmembres = nbMemebres; }
+    public void setId(int id) { this.class_id = id; }
+
+    public void setMemberList(List<Member> memberList){this.memberList=memberList;}
+
+
+    @Override
+    public String toString()
+    {
+        return "Class [class_id=" + class_id + ", class_name=" + class_name  + "]";
+    }
+
 }

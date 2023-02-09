@@ -25,7 +25,7 @@ public class Member {
     public Member(String name, String email, String birthdate, Class classe) {
         this.name = name;
         this.email = email;
-        this.birthdate = birthdate;
+        this.birthdate =birthdate;
         this.classe = classe;
     }
 
@@ -41,4 +41,6 @@ public class Member {
     public void setEmail(String email) { this.email = email; }
     public void setBirthdate(String birthdate) { this.birthdate = birthdate; }
     public void setClasse(Class classe) { this.classe = classe; }
+
+    public void setId(int id) { this.id= id; }
 }

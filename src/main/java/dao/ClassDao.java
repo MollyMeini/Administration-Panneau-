@@ -2,13 +2,31 @@ package dao;
 
 import models.Class;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ClassDao {
-    public List<Class> getAllClasses();
-    public Class getClass(int id);
-    public Class getClass(String name);
-    public void addClass(Class classe);
-    public void updateClass(Class classe, String className);
-    public void deleteMember(Class classe);
+    void addClass(Class classe) throws SQLException;
+
+    void deleteClass(int id) throws SQLException;
+
+    Class getClass(String name) throws SQLException;
+
+    Class getClass(int id) throws SQLException;
+
+    List<Class> getAllClasses() throws SQLException;
+
+    void updateClass(Class classe) throws SQLException;
+//    public List<Class> getAllClasses() throws SQLException;
+//    public Class getClass(int id);
+//
+//    void deleteClass(int id) throws SQLException;
+//
+//    public Class getClass(String name) throws SQLException;
+//    public void addClass(Class classe) throws SQLException;
+//    public void updateClass(Class classe) throws SQLException;
+////    public void deleteMember(Class classe);
+
+
+
 }
