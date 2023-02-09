@@ -21,7 +21,7 @@ use postgres;
 create table class(
     class_id serial PRIMARY KEY,
     class_name varchar(400) UNIQUE NOT NULL,
-    class_nmembres varchar(400) integer NOT NULL
+    class_nmembres int NOT NULL
 );
 
 
@@ -30,23 +30,22 @@ create table member(
     member_name varchar(400) NOT NULL,
     member_mail varchar(400) UNIQUE NOT NULL,
     member_birthdate varchar(400) not null,
-    class_id integer,
+    class_id int,
     CONSTRAINT fk_customer
           FOREIGN KEY(class_id)
     	    REFERENCES class(class_id)
 
 );
 
+create table codereview(
+    cr_id serial PRIMARY KEY,
+    cr_name varchar(400) NOT NULL,
+    cr_description varchar(400) NOT NULL,
+    cr_datetime varchar(400) not null,
+    class_id int,
+    CONSTRAINT fk_customer
+          FOREIGN KEY(class_id)
+            REFERENCES class(class_id)
 
-
-
-
-
-
-
-
-
-
-
-
+);
 

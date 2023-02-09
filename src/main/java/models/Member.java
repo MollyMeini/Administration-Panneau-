@@ -7,12 +7,10 @@ import java.sql.Date;
 public class Member {
 
     //Attributs
-
     private int id;
     private String name;
     private String email;
     private String birthdate;
-
     private Class classe;
 
 

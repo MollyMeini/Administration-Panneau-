@@ -13,10 +13,7 @@ public class Class {
     //Attributs
     private int class_id;
     private String class_name;
-
     private int class_nmembres;
-
-
     private MemberDao memberDao = new MemberDaoImpl();
 
 //    private List<Member> memberList;
