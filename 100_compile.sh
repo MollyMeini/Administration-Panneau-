@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## clean previous output
-rm -rf out/*
+#rm -rf out/*
 
 ## compile all java files to classes
 #javac -d out/classes -cp lib/slf4j-api-1.7.30.jar:lib/slf4j-simple-1.7.30.jar $(find ./src/main -name "*.java")
