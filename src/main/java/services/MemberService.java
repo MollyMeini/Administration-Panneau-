@@ -23,7 +23,7 @@ public class MemberService {
         try {
             Member member = this.getFromReq(req);
 
-            //On vérifie que le nombre max de personnes dans la classe n'est pas dépassé :
+            //On verifie que le nombre max de personnes dans la classe n'est pas depasse :
 
             List<Member> memberList = memberDao.getAllMembersByClass(member.getClasse().getId());
             if(memberList.size()>=member.getClasse().getNmembres()){
