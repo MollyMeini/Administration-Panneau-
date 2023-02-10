@@ -19,7 +19,7 @@ public class ClassService {
             return "ok";
         }catch (SQLException e){
             System.out.println("aaa");
-            return "ce nom de classe existe déjà";
+            return "ce nom de classe existe deja";
         }
     }
 

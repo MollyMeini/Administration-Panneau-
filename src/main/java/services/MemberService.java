@@ -27,7 +27,7 @@ public class MemberService {
 
             List<Member> memberList = memberDao.getAllMembersByClass(member.getClasse().getId());
             if(memberList.size()>=member.getClasse().getNmembres()){
-                return "cette classe est déja pleine";
+                return "cette classe est deja pleine";
             }
             else {
                 memberDao.addMember(member);
@@ -36,7 +36,7 @@ public class MemberService {
 
 
         }catch (SQLException e){
-            return "cet email existe déjà";
+            return "cet email existe deja";
         }
     }
 
@@ -55,7 +55,7 @@ public class MemberService {
             memberDao.updateMember(member);
             return "ok";
         }catch (SQLException e){
-            return "cet email existe déjà";
+            return "cet email existe deja";
         }
     }
 
