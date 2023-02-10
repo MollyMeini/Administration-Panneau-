@@ -33,7 +33,14 @@
 <%@ include file="header.jsp"%>
 <body>
 
-<% ClassService classService = new ClassService();%>
+<%
+    ClassService classService = new ClassService();
+    Member member = (Member)request.getAttribute("member");
+    if(member==null){
+        member= new Member();
+        member.setName("");
+    }
+%>
 <%
     Date date = Calendar.getInstance().getTime();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -60,7 +67,7 @@
                                 <form action="<%= request.getContextPath() %>/AddMember" method="post" class="">
                                     <div class="form-group">
                                         <label for="name">Nom</label>
-                                        <input required type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom">
+                                        <input required type="text" class="input-lg form-control" id="name" name="name" placeholder="Nom" value="<%=member.getName()%>">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Adresse Email</label>

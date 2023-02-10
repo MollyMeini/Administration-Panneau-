@@ -68,9 +68,18 @@
                                                 <%
                                                     List<Class> classes = classService.getAllClasses();
                                                     for(Class classe:classes){
+                                                        if(classe.getName().equals(member.getClasse().getName())){
                                                 %>
-                                                <option value="<%=classe.getName()%>"><%=classe.getName()%></option>
-                                                <%  } %>
+                                                <option selected value="<%=classe.getName()%>"><%=classe.getName()%></option>
+                                                <%
+                                                    }
+                                                    else{
+                                                %>
+                                                <option  value="<%=classe.getName()%>"><%=classe.getName()%></option>
+                                                <%
+                                                        }
+                                                    }
+                                                %>
                                             </select>
                                         </div>
                                         <div><input type="hidden" name="id" value="<%=member.getId()%>"></div>

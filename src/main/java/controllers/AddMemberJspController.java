@@ -16,6 +16,7 @@
  */
 package controllers;
 
+import models.Member;
 import services.MemberService;
 
 import javax.servlet.RequestDispatcher;
@@ -44,15 +45,19 @@ public class AddMemberJspController extends HttpServlet {
             dispatcher.forward(req, resp);
         }
         else {
+            Member member = new Member();
+            member.setName(req.getParameter("name"));
             req.setAttribute("error", error);
+            req.setAttribute("member", member);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
             dispatcher.forward(req, resp);
         }
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
-            dispatcher.forward(req, resp);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/add_member.jsp");
+        dispatcher.forward(req, resp);
     }
 
 }
