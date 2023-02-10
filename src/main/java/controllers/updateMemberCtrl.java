@@ -39,7 +39,7 @@ public class updateMemberCtrl extends HttpServlet {
         try {
             req.setAttribute("member", memberService.getMember(id));
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("/updateMember.jsp");
         dispatcher.forward(req, resp);
